@@ -1,0 +1,24 @@
+<section class="app" ng-app="myApp">
+  <article class="controller cf controller-hidden" ng-controller="FirstController">
+    
+    <div class="u-info {{ uInfoClass }}">
+      <div class="search-wrapper">
+        <input type="text" id="search-box" ng-model="searchBox" class="control" name="searchTerm" placeholder="Search users...">
+      </div>
+      <ul class="list-heading cf">
+        <li class="list-heading-item list-heading-first">Users ( {{ filteredNames.length }} )</li>
+      </ul>
+      <ul class="name-list">
+        <li class="name cf" ng-repeat="user in filteredNames = (users | filter : searchBox) | orderBy : 'name'">
+          <span class="u-name" ng-click="showUserData(user)">{{ user.name | first }} {{ user.name | last }}</span>
+        </li>
+        <li class="name cf" ng-hide="filteredNames.length">
+          <span class="u-name">No record to show</span>
+        </li>
+      </ul>
+    </div> 
+    
+    <user-data class="u-data" ng-if="showData">
+    
+  </article>
+</section>
